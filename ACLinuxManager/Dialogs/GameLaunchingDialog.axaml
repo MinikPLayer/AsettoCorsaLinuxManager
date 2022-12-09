@@ -1,0 +1,30 @@
+<themes:ThemedWindow xmlns="https://github.com/avaloniaui"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:dialogs="clr-namespace:ACLinuxManager.Dialogs"
+              xmlns:avaloniaProgressRing="clr-namespace:AvaloniaProgressRing;assembly=AvaloniaProgressRing"
+              xmlns:themes="clr-namespace:Avalonia.Themes;assembly=AvaloniaAutoThemeAddon"
+              mc:Ignorable="d" Width="300" Height="200" CanResize="False"
+              x:Class="ACLinuxManager.Dialogs.GameLaunchingDialog"
+              Title="Launching game">
+    <themes:ThemedWindow.DataContext>
+        <dialogs:GameLaunchingViewModel/>
+    </themes:ThemedWindow.DataContext>
+    <StackPanel Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
+        <avaloniaProgressRing:ProgressRing Width="80" Height="80" 
+                                           Foreground="White"
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center"
+                                           IsActive="{Binding IsLoading}"
+                                           IsVisible="{Binding IsLoading}"/>
+        <TextBlock Text="{Binding LoadingMessage, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button IsVisible="{Binding IsLoading, Converter={StaticResource BooleanInverter}, Mode=OneWay}"
+                Content="Close"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                x:Name="CloseButton"
+                Click="CloseButton_OnClick"/>
+    </StackPanel>
+
+</themes:ThemedWindow>

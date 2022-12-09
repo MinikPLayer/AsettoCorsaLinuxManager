@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACLinuxManager", "ACLinuxManager\ACLinuxManager.csproj", "{DB5B6A6A-8365-4956-8444-FF05F682ECEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaAutoThemeAddon", "AvaloniaAutoThemingPlugin\AvaloniaAutoThemeAddon.csproj", "{017AABAE-9289-467B-91CB-282B59ABDF50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcUtils", "AcUtils\AcUtils.csproj", "{B41BA7BE-0E59-4750-8DEB-FE0BB66EE1F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaProgressRing", "AvaloniaProgressRing\AvaloniaProgressRing\AvaloniaProgressRing.csproj", "{0C9DCE38-2498-4120-9F1D-7E2DA287968B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB5B6A6A-8365-4956-8444-FF05F682ECEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB5B6A6A-8365-4956-8444-FF05F682ECEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB5B6A6A-8365-4956-8444-FF05F682ECEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB5B6A6A-8365-4956-8444-FF05F682ECEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{017AABAE-9289-467B-91CB-282B59ABDF50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{017AABAE-9289-467B-91CB-282B59ABDF50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{017AABAE-9289-467B-91CB-282B59ABDF50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{017AABAE-9289-467B-91CB-282B59ABDF50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B41BA7BE-0E59-4750-8DEB-FE0BB66EE1F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B41BA7BE-0E59-4750-8DEB-FE0BB66EE1F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B41BA7BE-0E59-4750-8DEB-FE0BB66EE1F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B41BA7BE-0E59-4750-8DEB-FE0BB66EE1F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C9DCE38-2498-4120-9F1D-7E2DA287968B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C9DCE38-2498-4120-9F1D-7E2DA287968B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C9DCE38-2498-4120-9F1D-7E2DA287968B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C9DCE38-2498-4120-9F1D-7E2DA287968B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

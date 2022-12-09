@@ -1,0 +1,33 @@
+<dialogs:ValueDialog x:TypeArguments="sys:Boolean" xmlns="https://github.com/avaloniaui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:dialogs="clr-namespace:ACLinuxManager.Dialogs"
+                xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                Width="300" Height="200" CanResize="False"
+                x:Class="ACLinuxManager.Dialogs.MessageValueDialog"
+                Title="MessageDialog">
+    
+    <Grid Margin="10" ColumnDefinitions="*,*" RowDefinitions="*, 30" VerticalAlignment="Stretch" HorizontalAlignment="Center">
+        <TextBlock Grid.Row="0" 
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   Margin="10" x:Name="ContentText" Text="{Binding Message}"/>
+        <Button Content="OK" 
+                Margin="5, 0"
+                Grid.Row="1"
+                Grid.Column="0"
+                HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                x:Name="OkButton"
+                Click="Okbutton_OnClick"/>
+        <Button Content="Cancel" 
+                Margin="5, 0"
+                Grid.Row="1"
+                Grid.Column="1"
+                HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                x:Name="CancelButton"
+                Click="CancelButton_OnClick"/>
+    </Grid>
+</dialogs:ValueDialog>

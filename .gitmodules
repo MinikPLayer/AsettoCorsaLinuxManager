@@ -1,0 +1,6 @@
+[submodule "AvaloniaAutoThemingPlugin"]
+	path = AvaloniaAutoThemingPlugin
+	url = git@github.com:MinikPLayer/AvaloniaAutoThemingPlugin.git
+[submodule "AvaloniaProgressRing"]
+	path = AvaloniaProgressRing
+	url = https://github.com/Deadpikle/AvaloniaProgressRing.git
