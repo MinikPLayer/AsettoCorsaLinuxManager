@@ -16,16 +16,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Disable the keychain credential helper
-      run: git config --global credential.helper ""
-    - name: Enable the local store credential helper
-      run: git config --global --add credential.helper store
-    - name: Add credentials
-      run: echo "https://x-access-token:${{ secrets.SUBMODULE_CLONE_TOKEN }}@github.com" >> ~/.git-credentials
-    - name: Tell git to use https instead of ssh whenever it encounters it
-      run: 'git config --global url."https://github.com/".insteadof git@github.com:'
-    - name: Update submodules
-      run: 'git submodule update --recursive --remote'
+      with:
+        ssh-key: ${{ secrets.CI_SSH_PRIVATE_KEY }}
+        submodules: true
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
