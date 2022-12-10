@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="ACLinuxManager/App.axaml" value="ACLinuxManager/ACLinuxManager.csproj" />
+        <entry key="ACLinuxManager/Dialogs/GameLaunchingDialog.axaml" value="ACLinuxManager/ACLinuxManager.csproj" />
+        <entry key="ACLinuxManager/Dialogs/LaunchGameDialog.axaml" value="ACLinuxManager/ACLinuxManager.csproj" />
+        <entry key="ACLinuxManager/Dialogs/MessageDialog.axaml" value="ACLinuxManager/ACLinuxManager.csproj" />
+        <entry key="ACLinuxManager/MainWindow.axaml" value="ACLinuxManager/ACLinuxManager.csproj" />
+        <entry key="ACLinuxManager/Views/DriveView.axaml" value="ACLinuxManager/ACLinuxManager.csproj" />
+        <entry key="ACLinuxManager/Views/MainView.axaml" value="ACLinuxManager/ACLinuxManager.csproj" />
+        <entry key="ACLinuxManager/Views/NavigationView.axaml" value="ACLinuxManager/ACLinuxManager.csproj" />
+        <entry key="ACLinuxManager/Views/SettingsView.axaml" value="ACLinuxManager/ACLinuxManager.csproj" />
+        <entry key="ACLinuxManager/bool.axaml" value="ACLinuxManager/ACLinuxManager.csproj" />
+        <entry key="AvaloniaAutoThemingPlugin/Styles/AutoThemeResources.axaml" value="ACLinuxManager/ACLinuxManager.csproj" />
+        <entry key="AvaloniaAutoThemingPlugin/Styles/AutoThemeStyles.axaml" value="ACLinuxManager/ACLinuxManager.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
