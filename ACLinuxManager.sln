@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcUtils", "AcUtils\AcUtils.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaProgressRing", "AvaloniaProgressRing\AvaloniaProgressRing\AvaloniaProgressRing.csproj", "{0C9DCE38-2498-4120-9F1D-7E2DA287968B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcUtils.Tests", "AcUtils.Tests\AcUtils.Tests.csproj", "{3D1D85AE-89FE-4BA0-96E4-C5654F3C8079}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{0C9DCE38-2498-4120-9F1D-7E2DA287968B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C9DCE38-2498-4120-9F1D-7E2DA287968B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C9DCE38-2498-4120-9F1D-7E2DA287968B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D1D85AE-89FE-4BA0-96E4-C5654F3C8079}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D1D85AE-89FE-4BA0-96E4-C5654F3C8079}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D1D85AE-89FE-4BA0-96E4-C5654F3C8079}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D1D85AE-89FE-4BA0-96E4-C5654F3C8079}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

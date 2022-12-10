@@ -18,7 +18,11 @@
                                            VerticalAlignment="Center"
                                            IsActive="{Binding IsLoading}"
                                            IsVisible="{Binding IsLoading}"/>
-        <TextBlock Text="{Binding LoadingMessage, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding LoadingMessage, Mode=OneWay}" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"
+                   TextAlignment="Center"
+                   TextWrapping="Wrap"/>
         <Button IsVisible="{Binding IsLoading, Converter={StaticResource BooleanInverter}, Mode=OneWay}"
                 Content="Close"
                 HorizontalAlignment="Center"

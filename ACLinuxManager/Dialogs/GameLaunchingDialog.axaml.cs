@@ -1,6 +1,6 @@
-using System.Diagnostics;
-using System.IO;
+using ACLinuxManager.Settings;
 using ACLinuxManager.Utils;
+using AcUtils.Game;
 using Avalonia;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
@@ -43,14 +43,19 @@ public partial class GameLaunchingDialog : ThemedWindow
 
     public async void LaunchGame()
     {
-        Process p = new Process();
-        p.StartInfo.FileName = "zenity";
-        p.StartInfo.Arguments = "--info --text \"" + Directory.GetCurrentDirectory() + "\"";
-        p.Start();
-        await p.WaitForExitAsync();
-        ViewModel.IsLoading = false;
-        lockClosing = false;
-        ViewModel.LoadingMessage = "Game process exited";
+        var result = GameStarter.StartGameProcess(GameInfoSettings.GameRootPath, () =>
+        {
+            ViewModel.IsLoading = false;
+            lockClosing = false;
+            ViewModel.LoadingMessage = "Game process exited";
+        });
+
+        if (!result.Good)
+        {
+            ViewModel.IsLoading = false;
+            lockClosing = false;
+            ViewModel.LoadingMessage = "Game process start failed. Error: " + result.Message;
+        }
     }
 
     protected override bool HandleClosing()
