@@ -24,4 +24,10 @@
       <ProjectReference Include="..\AcUtils\AcUtils.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="TestData\test_race.ini">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
