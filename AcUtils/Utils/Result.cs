@@ -10,27 +10,20 @@ public class ResultException : Exception
 
 public struct Result<T>
 {
-
     private T? Value;
     public bool Good { get; private set; }
     public string Message { get; private set; }
 
-    public T? Unwrap(Action<string>? failAction = null)
+    public T Unwrap()
     {
-        return Except("Failed to unwrap Result", failAction);
+        return Expect("Failed to unwrap Result");
     }
 
-    public T? Except(string message, Action<string>? failAction = null)
+    public T Expect(string message)
     {
-        if (Good)
+        if (Good && Value != null)
             return Value;
 
-        if (failAction != null)
-        {
-            failAction(Message);
-            return default(T);
-        }
-        
         throw new ResultException(message);
     }
 

@@ -1,7 +1,12 @@
+using System;
+using System.Diagnostics;
+using System.Threading;
 using ACLinuxManager.Settings;
 using ACLinuxManager.Utils;
 using AcUtils.Game;
+using AcUtils.Utils;
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Themes;
@@ -18,18 +23,21 @@ public class GameLaunchingViewModel : ReactiveObject
         set => this.RaiseAndSetIfChanged(ref _isLoading, value);
     }
 
-    private string loadingMessage = "Waiting for the game process to exit...";
+    private string _loadingMessage = "Please wait...";
     public string LoadingMessage
     {
-        get => loadingMessage;
-        set => this.RaiseAndSetIfChanged(ref loadingMessage, value);
+        get => _loadingMessage;
+        set => this.RaiseAndSetIfChanged(ref _loadingMessage, value);
     }
 }
 
 public partial class GameLaunchingDialog : ThemedWindow
 {
-    private bool lockClosing = true;
+    private bool _lockClosing = true;
     private GameLaunchingViewModel ViewModel => (DataContext as GameLaunchingViewModel)!;
+
+    private CancellationTokenSource? _tokenSource = null;
+    private Process? _gameProcess = null;
     
     public GameLaunchingDialog()
     {
@@ -41,28 +49,57 @@ public partial class GameLaunchingDialog : ThemedWindow
         ProcessUtils._RunIfNotAvalonia(LaunchGame);
     }
 
+    void OnGameClose(string msg)
+    {
+        ViewModel.IsLoading = false;
+        _lockClosing = false;
+        ViewModel.LoadingMessage = msg;
+    }
+    
     public async void LaunchGame()
     {
-        var result = GameStarter.StartGameProcess(GameInfoSettings.GameRootPath, () =>
+        try
         {
-            ViewModel.IsLoading = false;
-            lockClosing = false;
-            ViewModel.LoadingMessage = "Game process exited";
-        });
+            _tokenSource = new CancellationTokenSource();
 
-        if (!result.Good)
-        {
-            ViewModel.IsLoading = false;
-            lockClosing = false;
-            ViewModel.LoadingMessage = "Game process start failed. Error: " + result.Message;
+            ViewModel.LoadingMessage = "Starting game process...";
+            var result = GameStarter.StartGameProcess();
+            if (!result.Good)
+                OnGameClose("Game process start failed. Error: " + result.Message);
+
+            _gameProcess =
+                (await GameStarter.WaitUntilGameLaunches(_tokenSource.Token)).Expect("Game launch cancelled");
+            ViewModel.LoadingMessage = "Game process launched, waiting for exit...";
+
+            var closeResult =
+                (await GameStarter.WaitUntilGameExits(_gameProcess, _tokenSource.Token)).Expect("Game closed");
+            
+            OnGameClose("Game process exited");
         }
+        catch (ResultException e)
+        {
+            OnGameClose(e.Message);
+        }
+
+    }
+
+    public void KillGameProcess()
+    {
+        if (_gameProcess == null || _tokenSource == null)
+            return;
+        
+        _tokenSource.Cancel();
+        var ret = GameStarter.KillProcess(_gameProcess);
+        if(!ret.Good)
+            OnGameClose("Cannot kill the game process");
     }
 
     protected override bool HandleClosing()
     {
-        if (lockClosing)
+        if (_lockClosing)
         {
             ViewModel.LoadingMessage = "Shutting down game process...";
+            KillGameProcess();
             return true;
         }
 
@@ -77,7 +114,7 @@ public partial class GameLaunchingDialog : ThemedWindow
 
     private void CloseButton_OnClick(object? sender, RoutedEventArgs e)
     {
-        if(!lockClosing)
+        if(!_lockClosing)
             this.Close();
     }
 }

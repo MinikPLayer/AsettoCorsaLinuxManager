@@ -21,10 +21,5 @@ public partial class DriveView : UserControl
     {
         var dialog = new GameLaunchingDialog();
         _ = dialog.ShowDialogHideOwner(MainWindow.Singleton);
-        
-        // GameStarter.StartGameProcess(Settings.GameInfoSettings.GameRootPath).Unwrap((msg) =>
-        // {
-        //     MessageValueDialog.Show(msg, "Trying to launch the game");
-        // });
     }
 }

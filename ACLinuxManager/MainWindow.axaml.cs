@@ -9,8 +9,6 @@ public partial class MainWindow : ThemedWindow
     
     public MainWindow()
     {
-        var name = ProcessUtils.GetParentName();
-        
         Singleton = this;
         InitializeComponent();
     }

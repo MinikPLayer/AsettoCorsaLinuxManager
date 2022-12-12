@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using ReactiveUI;
@@ -40,12 +41,12 @@ public partial class MessageValueDialog : ValueDialog<bool>
         AvaloniaXamlLoader.Load(this);
     }
 
-    public static async Task<bool> Show(string message, string title = "")
+    public static async Task<bool> Show(string message, string title = "", Window? win = null)
     {
-        var mainWindow = MainWindow.Singleton;
-        
+        win ??= MainWindow.Singleton;
+
         var box = new MessageValueDialog(message, title);
-        return await box.ShowValueDialog(mainWindow);
+        return await box.ShowValueDialog(win);
     }
 
     private void Okbutton_OnClick(object? sender, RoutedEventArgs e)
