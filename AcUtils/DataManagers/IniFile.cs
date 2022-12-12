@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using AcUtils.Utils;
 
 namespace AcUtils.DataManagers;
 
@@ -19,6 +21,21 @@ public class IniFile : Dictionary<string, Dictionary<string, string>>
                 : base("Value without section", lineStr, line, position) {}
         }
     }
+
+    public void UpdateData(string section, string name, object value)
+    {
+        if(!this.ContainsKey(section))
+            this.Add(section, new Dictionary<string, string>());
+
+        string? valueStr;
+        if (value is bool b)
+            valueStr = b ? "1" : "0";
+        else
+            valueStr = value.ToString();
+
+        if (valueStr != null) 
+            this[section][name] = valueStr;
+    }
     
     public IniFile()
     {
@@ -28,6 +45,45 @@ public class IniFile : Dictionary<string, Dictionary<string, string>>
     {
     }
 
+    /// <summary>
+    /// Constructor from custom data object
+    /// </summary>
+    /// <param name="customData">Object of type with "IniAttributes" added to it's fields</param>
+    public IniFile(object? customData)
+    {
+        //var type = customData.GetType();
+        // var iniElements = type.GetProperties().Select(x =>
+        //     (x.GetValue(customData), x.GetCustomAttributes(typeof(IniElementAttribute), false)));
+        var iniElements = ReflectionUtils.GetAttributeFilteredProperties<IniElementAttribute>(customData);
+
+        foreach (var (value, attr) in iniElements)
+        {
+            var iniAttr = (IniElementAttribute)attr;
+            if (value != null) 
+                UpdateData(iniAttr.Section, iniAttr.Name, value);
+        }
+
+        var iniLists = ReflectionUtils.GetAttributeFilteredProperties<IniListAttribute>(customData);
+        foreach (var (ob, listAttribute) in iniLists)
+        {
+            var listAttr = (IniListAttribute)listAttribute;
+
+            if (ob is not IList list) 
+                continue;
+            
+            for (var i = 0; i < list.Count; i++)
+            {
+                var listIniElements = ReflectionUtils.GetAttributeFilteredProperties<IniListAttribute>(list[i]);
+                foreach (var (el, attr) in listIniElements)
+                {
+                    var elAttr = (IniListAttribute)attr;
+                    if(el != null)
+                        UpdateData(listAttr.Name + "_" + i, elAttr.Name, el);
+                }
+            }
+        }
+    }
+    
     public IniFile(string inputData)
     {
         Dictionary<string, string>? curSubDict = null;

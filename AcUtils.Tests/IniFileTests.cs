@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using AcUtils.DataManagers;
+using AcUtils.DataTypes.IniFiles;
 using AcUtils.Utils;
 using Xunit;
 
@@ -82,5 +83,24 @@ public class IniFileTests
 
         var serialized2 = deserialized.ToString();
         Assert.Equal(serialized, serialized2);
+    }
+
+    public static IEnumerable<object[]> GetSerializationTestData()
+    {
+        yield return new object[]
+        {
+            RaceIni.GetDefault(),
+            File.ReadAllText("TestData/race_default.ini"),
+        };
+    }
+
+    [Theory]
+    [MemberData(nameof(GetSerializationTestData))]
+    public void TestObjectToIniSerialization(object? value, string expectedValue)
+    {
+        var iniFile = new IniFile(value);
+        var result = iniFile.ToString();
+        
+        Assert.Equal(expectedValue, result);
     }
 }
