@@ -31,6 +31,16 @@
       <None Update="TestData\race_default.ini">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
+        <ContentWithTargetPath Include="TestData\Tracks\**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>TestData\Tracks\%(RecursiveDir)\%(Filename)%(Extension)</TargetPath>
+        </ContentWithTargetPath>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="TestData\Tracks\DummyNotTrack\ui" />
+      <Folder Include="TestData\Tracks\imola" />
+      <Folder Include="TestData\Tracks\ks_nordschleife" />
     </ItemGroup>
 
 </Project>

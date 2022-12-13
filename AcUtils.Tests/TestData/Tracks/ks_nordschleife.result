@@ -1,0 +1,107 @@
+{
+  "FolderPath": "TestData/Tracks/ks_nordschleife",
+  "NameId": "ks_nordschleife",
+  "Configs": [
+    {
+      "Name": "Nordschleife - Endurance",
+      "Description": "Nurburgring Nordschleife",
+      "Tags": [
+        "original",
+        "circuit",
+        "Germany"
+      ],
+      "Geotags": [
+        "50.3356� N",
+        "6.9475� E"
+      ],
+      "Country": "Germany",
+      "City": "Nurburg",
+      "Length": 25378,
+      "Width": 15,
+      "PitBoxes": 24,
+      "Run": "clockwise",
+      "PreviewPath": "TestData/Tracks/ks_nordschleife/ui/endurance/preview.png",
+      "OutlinePath": "TestData/Tracks/ks_nordschleife/ui/endurance/outline.png",
+      "Backgrounds": [
+        "TestData/Tracks/ks_nordschleife/ui/endurance/bgr00.jpg",
+        "TestData/Tracks/ks_nordschleife/ui/endurance/bgr01.jpg",
+        "TestData/Tracks/ks_nordschleife/ui/endurance/bgr02.jpg"
+      ]
+    },
+    {
+      "Name": "Nordschleife - Endurance Cup",
+      "Description": "Nurburgring Nordschleife",
+      "Tags": [
+        "original",
+        "circuit",
+        "Germany"
+      ],
+      "Geotags": [
+        "50.3356� N",
+        "6.9475� E"
+      ],
+      "Country": "Germany",
+      "City": "Nurburg",
+      "Length": 24433,
+      "Width": 15,
+      "PitBoxes": 24,
+      "Run": "clockwise",
+      "PreviewPath": "TestData/Tracks/ks_nordschleife/ui/endurance_cup/preview.png",
+      "OutlinePath": "TestData/Tracks/ks_nordschleife/ui/endurance_cup/outline.png",
+      "Backgrounds": []
+    },
+    {
+      "Name": "Nordschleife",
+      "Description": "Nurburgring Nordschleife",
+      "Tags": [
+        "original",
+        "circuit",
+        "Germany"
+      ],
+      "Geotags": [
+        "50.3356� N",
+        "6.9475� E"
+      ],
+      "Country": "Germany",
+      "City": "Nurburg",
+      "Length": 20832,
+      "Width": 15,
+      "PitBoxes": 24,
+      "Run": "clockwise",
+      "PreviewPath": "TestData/Tracks/ks_nordschleife/ui/nordschleife/preview.png",
+      "OutlinePath": "TestData/Tracks/ks_nordschleife/ui/nordschleife/outline.png",
+      "Backgrounds": [
+        "TestData/Tracks/ks_nordschleife/ui/nordschleife/bgr00.jpg",
+        "TestData/Tracks/ks_nordschleife/ui/nordschleife/bgr01.jpg",
+        "TestData/Tracks/ks_nordschleife/ui/nordschleife/bgr02.jpg"
+      ]
+    },
+    {
+      "Name": "Nordschleife - Tourist",
+      "Description": "Nurburgring Nordschleife",
+      "Tags": [
+        "A2B",
+        "original",
+        "circuit",
+        "Germany"
+      ],
+      "Geotags": [
+        "50.3356� N",
+        "6.9475� E"
+      ],
+      "Country": "Germany",
+      "City": "Nurburg",
+      "Length": 19100,
+      "Width": 15,
+      "PitBoxes": 32,
+      "Run": "clockwise",
+      "PreviewPath": "TestData/Tracks/ks_nordschleife/ui/touristenfahrten/preview.png",
+      "OutlinePath": "TestData/Tracks/ks_nordschleife/ui/touristenfahrten/outline.png",
+      "Backgrounds": [
+        "TestData/Tracks/ks_nordschleife/ui/touristenfahrten/bgr00.jpg",
+        "TestData/Tracks/ks_nordschleife/ui/touristenfahrten/bgr01.jpg",
+        "TestData/Tracks/ks_nordschleife/ui/touristenfahrten/bgr02.jpg"
+      ]
+    }
+  ]
+}
