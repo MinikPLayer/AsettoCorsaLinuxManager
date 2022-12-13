@@ -1,4 +1,5 @@
 using System.IO;
+using System.Linq;
 using AcUtils.ContentManagers;
 using Newtonsoft.Json;
 using Xunit;
@@ -21,10 +22,10 @@ public class TrackTests
 
     [Theory]
     [InlineData("TestData/Tracks")]
-    public void TestTrackDiscovery(string path)
+    public async void TestTrackDiscovery(string path)
     {
         var expected = Directory.GetDirectories(path).Length - 1;
-        var tracks = TracksManager.GetAllTracks(path);
+        var tracks = TracksManager.GetAllTracks(path).ToList();
         
         Assert.Equal(expected, tracks.Count);
     }

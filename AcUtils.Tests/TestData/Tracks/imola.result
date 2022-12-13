@@ -16,13 +16,15 @@
       ],
       "Country": "Italy",
       "City": "Imola",
-      "Length": 4909,
+      "Length": "4909",
       "Width": 15,
       "PitBoxes": 24,
       "Run": "anti-clockwise",
+      "NameId": null,
       "PreviewPath": "TestData/Tracks/imola/ui/preview.png",
       "OutlinePath": "TestData/Tracks/imola/ui/outline.png",
-      "Backgrounds": []
+      "Backgrounds": [],
+      "ActualLength": 4909.0
     }
   ]
 }

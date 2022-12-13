@@ -1,9 +1,15 @@
 using System.Buffers.Text;
+using System.Globalization;
 
 namespace AcUtils.Utils;
 
 public static class StringUtils
 {
+    public static string ToTitleCase(this string title)
+    {
+        return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(title.ToLower()); 
+    }
+    
     // WARNING: Not tested as a cryptographic function (and probably not safe)
     public static string GetRandomBase64String(int length)
     {

@@ -100,6 +100,7 @@ public partial class GameLaunchingDialog : ThemedWindow
         {
             ViewModel.LoadingMessage = "Shutting down game process...";
             KillGameProcess();
+            _tokenSource?.Cancel();
             return true;
         }
 

@@ -7,12 +7,15 @@
                 Title="MessageDialog">
     
     <Grid Margin="10" ColumnDefinitions="*,*" RowDefinitions="*, 30" VerticalAlignment="Stretch" HorizontalAlignment="Center">
-        <TextBlock Grid.Row="0" 
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   HorizontalAlignment="Center" 
-                   VerticalAlignment="Center" 
-                   Margin="10" x:Name="ContentText" Text="{Binding Message}"/>
+        <ScrollViewer Grid.Row="0" 
+                      Grid.Column="0"
+                      Grid.ColumnSpan="2"
+                      Margin="10">
+            <TextBlock HorizontalAlignment="Center" 
+                       VerticalAlignment="Center" 
+                       x:Name="ContentText" Text="{Binding Message}"/>
+        </ScrollViewer>
+
         <Button Content="OK" 
                 Margin="5, 0"
                 Grid.Row="1"

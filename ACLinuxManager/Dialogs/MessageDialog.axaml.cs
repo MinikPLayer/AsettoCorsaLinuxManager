@@ -33,7 +33,7 @@ public partial class MessageValueDialog : ValueDialog<bool>
 #endif
         
         this.Title = title;
-        (this.DataContext as MessageDialogViewModel).Message = message;
+        (this.DataContext as MessageDialogViewModel)!.Message = message;
     }
 
     private void InitializeComponent()

@@ -2,12 +2,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:ACLinuxManager.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ACLinuxManager.Views.DriveView"
              Name="Drive">
+    <UserControl.DataContext>
+        <views:DriveViewViewModel/>
+    </UserControl.DataContext>
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="10">
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Drive Page</TextBlock>
-        <Button x:Name="TestStartButton" Content="Test start" Click="TestStartButton_OnClick"/>
+        <ComboBox Items="{Binding Tracks}" 
+                  HorizontalAlignment="Center" 
+                  VerticalAlignment="Center"
+                  SelectedItem="{Binding SelectedTrack}"/>
+        <Button x:Name="DriveButton" HorizontalAlignment="Center" Content="Start" Click="DriveButton_OnClick"/>
     </StackPanel>
 
 </UserControl>

@@ -237,7 +237,9 @@ public class RaceIni
     public List<CarData> Cars { get; set; } = new() { new CarData() };
 
     #endregion
-    
+
+    public IniFile ToIni() => new (this);
+
     public static RaceIni GetDefault(string driverName = "", string driverNationality = "")
     {
         var rIni = new RaceIni();

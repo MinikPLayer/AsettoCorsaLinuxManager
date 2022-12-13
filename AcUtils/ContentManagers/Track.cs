@@ -1,3 +1,4 @@
+using AcUtils.Utils;
 using Newtonsoft.Json;
 
 namespace AcUtils.ContentManagers;
@@ -12,7 +13,10 @@ public class Track
         public List<string> Geotags;
         public string Country;
         public string City;
-        public int Length;
+        public string Length;
+
+        public float ActualLength => float.Parse(Length.Replace(".", ""));
+        
         public int Width;
         public int PitBoxes;
         /// <summary>
@@ -20,12 +24,17 @@ public class Track
         /// </summary>
         public string Run;
         
+        public string NameId;
         public string PreviewPath;
         public string OutlinePath;
         public List<string> Backgrounds;
 
         public void LoadConfigData(string configPath)
         {
+            NameId = new DirectoryInfo(configPath).Name;
+            if (NameId == "ui")
+                NameId = "";
+            
             var prevPath = Path.Combine(configPath, "preview.png");
             if (File.Exists(prevPath))
                 PreviewPath = prevPath;
@@ -42,8 +51,13 @@ public class Track
     }
 
     public string FolderPath;
-    public string? NameId;
+    public string NameId;
     public List<Config> Configs;
+
+    public override string ToString()
+    {
+        return NameId.Replace("ks_", "").Replace('_', ' ').ToTitleCase();
+    }
 
     public static bool IsTrackDirectory(string path)
     {
@@ -74,7 +88,7 @@ public class Track
             return false;
         }
     }
-    
+
     public Track(string path)
     {
         FolderPath = path;
@@ -88,5 +102,6 @@ public class Track
         // One config track
         if (Configs.Count == 0)
             LoadConfig(configsPath);
+        
     }
 }

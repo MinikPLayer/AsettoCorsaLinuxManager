@@ -16,17 +16,19 @@
       ],
       "Country": "Germany",
       "City": "Nurburg",
-      "Length": 25378,
+      "Length": "25378",
       "Width": 15,
       "PitBoxes": 24,
       "Run": "clockwise",
+      "NameId": "endurance",
       "PreviewPath": "TestData/Tracks/ks_nordschleife/ui/endurance/preview.png",
       "OutlinePath": "TestData/Tracks/ks_nordschleife/ui/endurance/outline.png",
       "Backgrounds": [
         "TestData/Tracks/ks_nordschleife/ui/endurance/bgr00.jpg",
         "TestData/Tracks/ks_nordschleife/ui/endurance/bgr01.jpg",
         "TestData/Tracks/ks_nordschleife/ui/endurance/bgr02.jpg"
-      ]
+      ],
+      "ActualLength": 25378.0
     },
     {
       "Name": "Nordschleife - Endurance Cup",
@@ -42,13 +44,15 @@
       ],
       "Country": "Germany",
       "City": "Nurburg",
-      "Length": 24433,
+      "Length": "24433",
       "Width": 15,
       "PitBoxes": 24,
       "Run": "clockwise",
+      "NameId": "endurance_cup",
       "PreviewPath": "TestData/Tracks/ks_nordschleife/ui/endurance_cup/preview.png",
       "OutlinePath": "TestData/Tracks/ks_nordschleife/ui/endurance_cup/outline.png",
-      "Backgrounds": []
+      "Backgrounds": [],
+      "ActualLength": 24433.0
     },
     {
       "Name": "Nordschleife",
@@ -64,17 +68,19 @@
       ],
       "Country": "Germany",
       "City": "Nurburg",
-      "Length": 20832,
+      "Length": "20832",
       "Width": 15,
       "PitBoxes": 24,
       "Run": "clockwise",
+      "NameId": "nordschleife",
       "PreviewPath": "TestData/Tracks/ks_nordschleife/ui/nordschleife/preview.png",
       "OutlinePath": "TestData/Tracks/ks_nordschleife/ui/nordschleife/outline.png",
       "Backgrounds": [
         "TestData/Tracks/ks_nordschleife/ui/nordschleife/bgr00.jpg",
         "TestData/Tracks/ks_nordschleife/ui/nordschleife/bgr01.jpg",
         "TestData/Tracks/ks_nordschleife/ui/nordschleife/bgr02.jpg"
-      ]
+      ],
+      "ActualLength": 20832.0
     },
     {
       "Name": "Nordschleife - Tourist",
@@ -91,17 +97,19 @@
       ],
       "Country": "Germany",
       "City": "Nurburg",
-      "Length": 19100,
+      "Length": "19100",
       "Width": 15,
       "PitBoxes": 32,
       "Run": "clockwise",
+      "NameId": "touristenfahrten",
       "PreviewPath": "TestData/Tracks/ks_nordschleife/ui/touristenfahrten/preview.png",
       "OutlinePath": "TestData/Tracks/ks_nordschleife/ui/touristenfahrten/outline.png",
       "Backgrounds": [
         "TestData/Tracks/ks_nordschleife/ui/touristenfahrten/bgr00.jpg",
         "TestData/Tracks/ks_nordschleife/ui/touristenfahrten/bgr01.jpg",
         "TestData/Tracks/ks_nordschleife/ui/touristenfahrten/bgr02.jpg"
-      ]
+      ],
+      "ActualLength": 19100.0
     }
   ]
 }
