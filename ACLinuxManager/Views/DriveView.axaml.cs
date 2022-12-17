@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -22,6 +23,38 @@ public class DriveViewViewModel : ReactiveObject
     
     public ObservableCollection<Track>? Tracks => DriveView.Tracks;
 
+    private string _selectedConfigPreviewPath = "";
+    public string SelectedConfigPreviewPath
+    {
+        get => _selectedConfigPreviewPath;
+        set => this.RaiseAndSetIfChanged(ref _selectedConfigPreviewPath, value);
+    }
+    
+    private string _selectedConfigOutlinePath = "";
+    public string SelectedConfigOutlinePath
+    {
+        get => _selectedConfigOutlinePath;
+        set => this.RaiseAndSetIfChanged(ref _selectedConfigOutlinePath, value);
+    }
+
+    private Track.Config? _selectedConfig;
+    public Track.Config? SelectedConfig
+    {
+        get => _selectedConfig;
+        set
+        {
+            if (value is null)
+                return;
+
+            this.RaiseAndSetIfChanged(ref _selectedConfig, value);
+
+            SelectedConfigPreviewPath = value.Value.PreviewPath;
+            SelectedConfigOutlinePath = value.Value.OutlinePath;
+        }
+    }
+
+    public ObservableCollection<Track.Config> SelectedTrackConfigs { get; set; } = new();
+
     private Track? _selectedTrack;
     public Track? SelectedTrack
     {
@@ -34,6 +67,10 @@ public class DriveViewViewModel : ReactiveObject
             this.RaiseAndSetIfChanged(ref _selectedTrack, value);
             raceIni.RaceTrackName = value.NameId;
             raceIni.RaceTrackConfig = value.Configs[0].NameId;
+
+            SelectedTrackConfigs.Clear();
+            SelectedTrackConfigs.AddRange(value.Configs);
+            SelectedConfig = value.Configs[0];
         }
     }
 }
@@ -54,7 +91,13 @@ public partial class DriveView : UserControl
             {
                 await Dispatcher.UIThread.InvokeAsync(() =>
                 {
-                    Tracks.Add(track);
+                    var str = track.ToString();
+                    var i = 0;
+                    for (; i < Tracks.Count; i++)
+                        if (string.CompareOrdinal(Tracks[i].ToString(), str) > 0)
+                            break;
+
+                    Tracks.Insert(i, track);
                     ViewModel.SelectedTrack ??= track;
                 });
             }

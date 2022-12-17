@@ -5,6 +5,7 @@ namespace AcUtils.Utils;
 
 public static class StringUtils
 {
+
     public static string ToTitleCase(this string title)
     {
         return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(title.ToLower()); 

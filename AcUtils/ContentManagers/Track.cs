@@ -48,6 +48,11 @@ public class Track
             var bgFiles = Directory.GetFiles(configPath, "bgr*").OrderBy(x => x);
             Backgrounds.AddRange(bgFiles);
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 
     public string FolderPath;
@@ -102,6 +107,5 @@ public class Track
         // One config track
         if (Configs.Count == 0)
             LoadConfig(configsPath);
-        
     }
 }
