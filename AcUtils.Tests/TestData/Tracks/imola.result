@@ -1,5 +1,4 @@
 {
-  "FolderPath": "TestData/Tracks/imola",
   "NameId": "imola",
   "Configs": [
     {
@@ -20,7 +19,7 @@
       "Width": 15,
       "PitBoxes": 24,
       "Run": "anti-clockwise",
-      "NameId": null,
+      "NameId": "",
       "PreviewPath": "TestData/Tracks/imola/ui/preview.png",
       "OutlinePath": "TestData/Tracks/imola/ui/outline.png",
       "Backgrounds": [],

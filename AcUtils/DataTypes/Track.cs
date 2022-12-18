@@ -1,7 +1,7 @@
 using AcUtils.Utils;
 using Newtonsoft.Json;
 
-namespace AcUtils.ContentManagers;
+namespace AcUtils.DataTypes;
 
 public class Track
 {
@@ -54,8 +54,7 @@ public class Track
             return Name;
         }
     }
-
-    public string FolderPath;
+    
     public string NameId;
     public List<Config> Configs;
 
@@ -96,7 +95,6 @@ public class Track
 
     public Track(string path)
     {
-        FolderPath = path;
         NameId = new DirectoryInfo(path).Name;
         
         Configs = new List<Config>();

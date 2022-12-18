@@ -1,0 +1,184 @@
+{
+  "NameId": "abarth500",
+  "Name": "Abarth 500 EsseEsse",
+  "Brand": "Abarth",
+  "Description": "Turning the modern Fiat 500 into an Abarth meant lowering the ride, adding a turbocharger to the 1.4-litre engine (no mean feat under that tiny bonnet), giving it Torque Transfer Control for more aggressive cornering and improving the aerodynamics with side-skirts and spoilers.<br/><br/>\r\n\t\r\n\tThe little Abarth is fast, very agile and plenty of fun.",
+  "Tags": [
+    "#small sports",
+    "fwd",
+    "manual",
+    "turbo",
+    "street",
+    "hot hatchback",
+    "italy"
+  ],
+  "Class": "street",
+  "Specs": {
+    "BHP": "160bhp",
+    "Torque": "230Nm",
+    "Weight": "1025kg",
+    "TopSpeed": "211km/h",
+    "Acceleration": "7.4s 0-100",
+    "PWRatio": "6.40kg/hp",
+    "Range": 68
+  },
+  "TorqueCurve": [
+    [
+      "0",
+      "0"
+    ],
+    [
+      "500",
+      "130"
+    ],
+    [
+      "1000",
+      "147"
+    ],
+    [
+      "1500",
+      "162"
+    ],
+    [
+      "2000",
+      "167"
+    ],
+    [
+      "2500",
+      "179"
+    ],
+    [
+      "3000",
+      "230"
+    ],
+    [
+      "3500",
+      "230"
+    ],
+    [
+      "4000",
+      "223"
+    ],
+    [
+      "4500",
+      "221"
+    ],
+    [
+      "5000",
+      "223"
+    ],
+    [
+      "5500",
+      "207"
+    ],
+    [
+      "5750",
+      "199"
+    ],
+    [
+      "6000",
+      "189"
+    ],
+    [
+      "6500",
+      "172"
+    ]
+  ],
+  "PowerCurve": [
+    [
+      "0",
+      "0"
+    ],
+    [
+      "500",
+      "9"
+    ],
+    [
+      "1000",
+      "21"
+    ],
+    [
+      "1500",
+      "34"
+    ],
+    [
+      "2000",
+      "47"
+    ],
+    [
+      "2500",
+      "63"
+    ],
+    [
+      "3000",
+      "97"
+    ],
+    [
+      "3500",
+      "114"
+    ],
+    [
+      "4000",
+      "125"
+    ],
+    [
+      "4500",
+      "140"
+    ],
+    [
+      "5000",
+      "157"
+    ],
+    [
+      "5500",
+      "160"
+    ],
+    [
+      "5750",
+      "161"
+    ],
+    [
+      "6000",
+      "159"
+    ],
+    [
+      "6500",
+      "157"
+    ]
+  ],
+  "Skins": [
+    {
+      "SkinName": "",
+      "DriverName": "",
+      "Country": "",
+      "Team": "",
+      "Number": "0",
+      "Priority": 1,
+      "NameId": "black_red",
+      "PreviewPath": "",
+      "LiveryPath": "TestData/Cars/abarth500/skins/black_red/livery.png"
+    },
+    {
+      "SkinName": "",
+      "DriverName": "",
+      "Country": "",
+      "Team": "",
+      "Number": "0",
+      "Priority": 5,
+      "NameId": "pearl",
+      "PreviewPath": "",
+      "LiveryPath": "TestData/Cars/abarth500/skins/pearl/livery.png"
+    },
+    {
+      "SkinName": "",
+      "DriverName": "",
+      "Country": "",
+      "Team": "",
+      "Number": "0",
+      "Priority": 9,
+      "NameId": "white",
+      "PreviewPath": "",
+      "LiveryPath": "TestData/Cars/abarth500/skins/white/livery.png"
+    }
+  ]
+}

@@ -1,12 +1,9 @@
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
 using System.Threading.Tasks;
 using ACLinuxManager.Dialogs;
 using ACLinuxManager.Settings;
 using AcUtils.ContentManagers;
+using AcUtils.DataTypes;
 using AcUtils.DataTypes.IniFiles;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -19,7 +16,7 @@ namespace ACLinuxManager.Views;
 
 public class DriveViewViewModel : ReactiveObject
 {
-    public RaceIni raceIni = new RaceIni();
+    public readonly RaceIni RaceIni = new RaceIni();
     
     public ObservableCollection<Track>? Tracks => DriveView.Tracks;
 
@@ -65,8 +62,8 @@ public class DriveViewViewModel : ReactiveObject
                 return;
             
             this.RaiseAndSetIfChanged(ref _selectedTrack, value);
-            raceIni.RaceTrackName = value.NameId;
-            raceIni.RaceTrackConfig = value.Configs[0].NameId;
+            RaceIni.RaceTrackName = value.NameId;
+            RaceIni.RaceTrackConfig = value.Configs[0].NameId;
 
             SelectedTrackConfigs.Clear();
             SelectedTrackConfigs.AddRange(value.Configs);
@@ -118,7 +115,7 @@ public partial class DriveView : UserControl
 
     private void DriveButton_OnClick(object? sender, RoutedEventArgs e)
     {
-        var msgDialog = new MessageValueDialog(ViewModel.raceIni.ToIni().ToString(), "Race .ini");
+        var msgDialog = new MessageValueDialog(ViewModel.RaceIni.ToIni().ToString(), "Race .ini");
         msgDialog.ShowDialog(MainWindow.Singleton);
 
         // var dialog = new GameLaunchingDialog();

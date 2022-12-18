@@ -1,6 +1,7 @@
 using System.IO;
 using System.Linq;
 using AcUtils.ContentManagers;
+using AcUtils.DataTypes;
 using Newtonsoft.Json;
 using Xunit;
 

@@ -2,18 +2,17 @@ using AcUtils.DataTypes;
 
 namespace AcUtils.ContentManagers;
 
-public static class TracksManager
+public class CarsManager
 {
-
-    public static IEnumerable<Track> GetAllTracks(string path)
+    public static IEnumerable<Car> GetAllCars(string path)
     {
         var dirs = Directory.GetDirectories(path);
         foreach (var dir in dirs)
         {
-            if (!Track.IsTrackDirectory(dir))
+            if (!Car.IsCarDirectory(dir))
                 continue;
-            
-            yield return new Track(dir);
+
+            yield return Car.LoadFromFile(dir);
         }
         
     }
