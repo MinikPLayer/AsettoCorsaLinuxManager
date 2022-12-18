@@ -9,4 +9,5 @@ public static class GameInfoSettings
     
     public static string ContentPath = "/home/minik/.steam/steam/steamapps/common/assettocorsa/content/";
     public static string TrackContentPath => Path.Combine(ContentPath, "tracks");
+    public static string CarsContentPath => Path.Combine(ContentPath, "cars");
 }

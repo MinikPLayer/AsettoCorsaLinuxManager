@@ -18,8 +18,67 @@ public class DriveViewViewModel : ReactiveObject
 {
     public readonly RaceIni RaceIni = new RaceIni();
     
-    public ObservableCollection<Track>? Tracks => DriveView.Tracks;
+    public ObservableCollection<Track> Tracks => DriveView.Tracks;
+    public ObservableCollection<Car> Cars => DriveView.Cars;
 
+    private string _selectedCarSkinLiveryPath = "";
+    public string SelectedCarSkinLiveryPath
+    {
+        get => _selectedCarSkinLiveryPath;
+        set => this.RaiseAndSetIfChanged(ref _selectedCarSkinLiveryPath, value);
+    }
+    
+    private string _selectedCarSkinPreviewPath = "";
+    public string SelectedCarSkinPreviewPath
+    {
+        get => _selectedCarSkinPreviewPath;
+        set => this.RaiseAndSetIfChanged(ref _selectedCarSkinPreviewPath, value);
+    }
+    
+    private Car.Skin? _selectedCarSkin;
+    public Car.Skin? SelectedCarSkin
+    {
+        get => _selectedCarSkin;
+        set
+        {
+            this.RaiseAndSetIfChanged(ref _selectedCarSkin, value);
+
+            if (value == null)
+            {
+                RaceIni.Cars[0].Skin = "";
+                return;
+            }
+
+            RaceIni.Cars[0].Skin = value.NameId;
+            
+            SelectedCarSkinLiveryPath = value.LiveryPath;
+            SelectedCarSkinPreviewPath = value.PreviewPath;
+        }
+    }
+
+    public ObservableCollection<Car.Skin> CarSkinsAvailable { get; set; } = new();
+
+    private Car? _selectedCar;
+    public Car? SelectedCar
+    {
+        get => _selectedCar;
+        set
+        {
+            this.RaiseAndSetIfChanged(ref _selectedCar, value);
+            if (value == null)
+            {
+                RaceIni.RaceCarModel = RaceIni.Cars[0].Model = "";
+                return;
+            }
+            
+            RaceIni.RaceCarModel = RaceIni.Cars[0].Model = value.NameId;
+
+            CarSkinsAvailable.Clear();
+            CarSkinsAvailable.AddRange(value.Skins);
+            SelectedCarSkin = value.Skins[0];
+        }
+    }
+    
     private string _selectedConfigPreviewPath = "";
     public string SelectedConfigPreviewPath
     {
@@ -40,10 +99,14 @@ public class DriveViewViewModel : ReactiveObject
         get => _selectedConfig;
         set
         {
-            if (value is null)
-                return;
-
             this.RaiseAndSetIfChanged(ref _selectedConfig, value);
+            if (value is null)
+            {
+                RaceIni.RaceTrackConfig = "";
+                return;
+            }
+
+            RaceIni.RaceTrackConfig = value.Value.NameId;
 
             SelectedConfigPreviewPath = value.Value.PreviewPath;
             SelectedConfigOutlinePath = value.Value.OutlinePath;
@@ -58,12 +121,13 @@ public class DriveViewViewModel : ReactiveObject
         get => _selectedTrack;
         set
         {
-            if (value == null)
-                return;
-            
             this.RaiseAndSetIfChanged(ref _selectedTrack, value);
+            if (value == null)
+            {
+                RaceIni.RaceTrackName = "";
+                return;
+            }
             RaceIni.RaceTrackName = value.NameId;
-            RaceIni.RaceTrackConfig = value.Configs[0].NameId;
 
             SelectedTrackConfigs.Clear();
             SelectedTrackConfigs.AddRange(value.Configs);
@@ -75,6 +139,7 @@ public class DriveViewViewModel : ReactiveObject
 public partial class DriveView : UserControl
 {
     public static readonly ObservableCollection<Track> Tracks = new();
+    public static readonly ObservableCollection<Car> Cars = new();
     
     public DriveViewViewModel ViewModel => (DriveViewViewModel)DataContext!;
 
@@ -96,6 +161,26 @@ public partial class DriveView : UserControl
 
                     Tracks.Insert(i, track);
                     ViewModel.SelectedTrack ??= track;
+                });
+            }
+        });
+        
+        await Task.Run(async () =>
+        {
+            Cars.Clear();
+            var newCars = CarsManager.GetAllCars(GameInfoSettings.CarsContentPath);
+            foreach (var car in newCars)
+            {
+                await Dispatcher.UIThread.InvokeAsync(() =>
+                {
+                    var str = car.ToString();
+                    var i = 0;
+                    for (; i < Cars.Count; i++)
+                        if (string.CompareOrdinal(Cars[i].ToString(), str) > 0)
+                            break;
+
+                    Cars.Insert(i, car);
+                    ViewModel.SelectedCar ??= car;
                 });
             }
         });

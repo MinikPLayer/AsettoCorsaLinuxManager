@@ -1,3 +1,4 @@
+using AcUtils.Utils;
 using Newtonsoft.Json;
 
 namespace AcUtils.DataTypes;
@@ -31,16 +32,29 @@ public class Car
             s.NameId = new DirectoryInfo(path).Name;
             if (s.NameId == "ui")
                 s.NameId = "";
-            
-            var prevPath = Path.Combine(path, "preview.png");
-            if (File.Exists(prevPath))
-                s.PreviewPath = prevPath;
+
+            var prevPaths = new string[] { "preview.png", "preview.jpg" };
+            foreach (var p in prevPaths)
+            {
+                var testPath = Path.Combine(path, p);
+                if (File.Exists(testPath))
+                {
+                    s.PreviewPath = testPath;
+                    break;
+                }
+            }
+
 
             var outPath = Path.Combine(path, "livery.png");
             if (File.Exists(outPath))
                 s.LiveryPath = outPath;
 
             return s;
+        }
+
+        public override string ToString()
+        {
+            return string.IsNullOrEmpty(SkinName) ? NameId.Replace('_', ' ').ToTitleCase() : SkinName;
         }
     }
     
@@ -98,8 +112,10 @@ public class Car
         return car;
     }
 
-    public override string ToString()
+    public string Serialize()
     {
         return JsonConvert.SerializeObject(this, Formatting.Indented);
     }
+
+    public override string ToString() => Name;
 }

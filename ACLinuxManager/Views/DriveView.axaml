@@ -22,29 +22,52 @@
             <Grid.ColumnDefinitions>*, *</Grid.ColumnDefinitions>
             <Grid>
                 <Grid.RowDefinitions>150, 30, 30</Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>267, 267</Grid.ColumnDefinitions>
-                    <Border Grid.Row="0" Grid.Column="0" Background="Black" BorderThickness="10" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <Grid>
-                            <Image Source="{Binding SelectedConfigPreviewPath, Converter={StaticResource BitmapConv}}" 
-                                   Stretch="UniformToFill"/>
-                            <Image Grid.Row="0" Grid.Column="0" 
-                                   Source="{Binding SelectedConfigOutlinePath, Converter={StaticResource BitmapConv}}" 
-                                   Stretch="Uniform"/>
-                        </Grid>
-                    </Border>
+                <Grid.ColumnDefinitions>267, 267</Grid.ColumnDefinitions>
+                <Border Grid.Row="0" Grid.Column="0" Background="Black" BorderThickness="10" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Grid>
+                        <Image Source="{Binding SelectedConfigPreviewPath, Converter={StaticResource BitmapConv}}" 
+                               Stretch="UniformToFill"/>
+                        <Image Grid.Row="0" Grid.Column="0" 
+                               Source="{Binding SelectedConfigOutlinePath, Converter={StaticResource BitmapConv}}" 
+                               Stretch="Uniform"/>
+                    </Grid>
+                </Border>
+                
+                <StackPanel HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+                    <ComboBox Items="{Binding Tracks}" 
+                              HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                              Margin="5"
+                              SelectedItem="{Binding SelectedTrack}"/>
+                
+                    <ComboBox Items="{Binding SelectedTrackConfigs}" 
+                              IsEnabled="{Binding SelectedTrackConfigs.Count, Converter={StaticResource IVisConv}, ConverterParameter=1}"
+                              HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                              Margin="5"
+                              SelectedItem="{Binding SelectedConfig, Mode=TwoWay}"/>       
+                </StackPanel>
+                
+                <!-- Car selection -->
+                <Border Grid.Row="0" Grid.Column="1" Background="Black" BorderThickness="10" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Grid>
+                        <Image Source="{Binding SelectedCarSkinPreviewPath, Converter={StaticResource BitmapConv}}" 
+                               Stretch="UniformToFill"/>
+                        <Image Source="{Binding SelectedCarSkinLiveryPath, Converter={StaticResource BitmapConv}}" 
+                               Stretch="Uniform" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="30" Height="30"/>
+                    </Grid>
+                </Border>
                     
-                    <StackPanel HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="0" Orientation="Vertical">
-                        <ComboBox Items="{Binding Tracks}" 
-                                  HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                                  Margin="5" x:Name="TrackSelectionBox"
-                                  SelectedItem="{Binding SelectedTrack}"/>
+                <StackPanel HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+                    <ComboBox Items="{Binding Cars}" 
+                              HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                              Margin="5"
+                              SelectedItem="{Binding SelectedCar}"/>
                     
-                        <ComboBox Items="{Binding SelectedTrackConfigs}" 
-                                  IsEnabled="{Binding SelectedTrackConfigs.Count, Converter={StaticResource IVisConv}, ConverterParameter=1}"
-                                  HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                                  Margin="5"
-                                  SelectedItem="{Binding SelectedConfig, Mode=TwoWay}"/>       
-                    </StackPanel>
+                    <ComboBox Items="{Binding CarSkinsAvailable}" 
+                              IsEnabled="{Binding CarSkinsAvailable.Count, Converter={StaticResource IVisConv}, ConverterParameter=1}"
+                              HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                              Margin="5"
+                              SelectedItem="{Binding SelectedCarSkin, Mode=TwoWay}"/>       
+                </StackPanel>
             </Grid>
         </Grid>
 
